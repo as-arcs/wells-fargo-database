@@ -4,9 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Portfolio {
@@ -14,14 +12,16 @@ public class Portfolio {
   @GeneratedValue()
   private long portfolioId;
 
-  @OneToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "client_Id")
+  @ManyToOne
   private Client client;
 
   @Column(nullable = false)
   private long creationDate;
 
-  public void setId(Long portfolioId, Long creationDate) {
+  protected Portfolio() {
+
+  }
+  public void Portfolio(Long portfolioId, Long creationDate) {
     this.portfolioId = portfolioId;
     this.creationDate = creationDate;
   }

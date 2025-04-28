@@ -2,10 +2,8 @@ package com.wellsfargo.counselor.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -14,8 +12,7 @@ public class Client {
   @GeneratedValue()
   private long clientId;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "advisor_Id")
+  @ManyToOne
   private Advisor advisor;
 
   @Column(nullable = false)

@@ -15,31 +15,30 @@ public class Security {
   @GeneratedValue()
   private Long securityId;
 
-  @ManyToOne(fetch = FetchType.LAZY, optional = false)
-  @JoinColumn(name = "portfolio_id")
+  @ManyToOne
   private Portfolio portfolio;
 
-  @Column
+  @Column(nullable = false)
   private String name;
 
-  @Column
+  @Column(nullable = false)
   private String category;
 
-  @Column
-  private long purchasePrice;
+  @Column(nullable = false)
+  private float purchasePrice;
 
-  @Column
+  @Column(nullable = false)
   private String purchaseDate;
 
-  @Column
-  private int quantity;
+  @Column(nullable = false)
+  private float quantity;
 
-  public Security() {
+  protected Security() {
 
   }
 
   public Security(Portfolio portfolio, String name, String category,
-                  long purchasePrice, String purchaseDate, int quantity) {
+                  float purchasePrice, String purchaseDate, float quantity) {
     this.portfolio = portfolio;
     this.name = name;
     this.category = category;
@@ -79,11 +78,11 @@ public class Security {
     this.category = category;
   }
 
-  public long getPurchasePrice() {
+  public float getPurchasePrice() {
     return purchasePrice;
   }
 
-  public void setPurchasePrice(long purchasePrice) {
+  public void setPurchasePrice(float purchasePrice) {
     this.purchasePrice = purchasePrice;
   }
 
@@ -95,11 +94,11 @@ public class Security {
     this.purchaseDate = purchaseDate;
   }
 
-  public Integer getQuantity() {
+  public float getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(Integer quantity) {
+  public void setQuantity(float quantity) {
     this.quantity = quantity;
   }
 }
